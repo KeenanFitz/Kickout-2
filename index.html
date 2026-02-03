@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAA Kickout Pattern Recognition</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topControls">
+  <button id="simpleViewToggle">Simple View</button>
+  <button id="clearDataBtn">Clear Match Data</button>
+</div>
+
+<div id="advancedControls">
+  <h1>GAA Kickout Input</h1>
+  
+  <input id="callInput" placeholder="Call (Red, Blue, Yellow, etc.)" />
+  
+  <select id="setupInput">
+    <option value="">Setup</option>
+    <option>Example</option>
+    <option>Spine</option>
+    <option>Wide</option>
+    <option>Short</option>
+    <option>Pods</option>
+  </select>
+
+  <button onclick="toggleHalftime()" class="halfBtn">Halftime Switch</button>
+  <p id="halfStatus">First Half</p>
+
+  <button id="lostToggle" class="won">Kickout WON</button>
+
+  <h3>Kickout Won By</h3>
+  <div id="playerGrid"></div>
+</div>
+
+<h2>Tap Kickout Zone</h2>
+
+<div id="pitchContainer">
+  <img src="gaa_pitch.png" alt="GAA Pitch" id="pitch">
+  <div class="zone" data-zone="1" style="top:5%;left:5%;"></div>
+  <div class="zone" data-zone="2" style="top:5%;left:38%;"></div>
+  <div class="zone" data-zone="3" style="top:5%;left:70%;"></div>
+  <div class="zone" data-zone="4" style="top:50%;left:5%;"></div>
+  <div class="zone" data-zone="5" style="top:50%;left:38%;"></div>
+  <div class="zone" data-zone="6" style="top:50%;left:70%;"></div>
+</div>
+
+<div id="predictionBox">
+  <h2>Prediction</h2>
+  <p id="prediction">Waiting for data…</p>
+</div>
+
+<div id="alertBox" class="hidden">⚠️ PATTERN BROKEN</div>
+
+<script src="script.js"></script>
+</body>
+</html>
