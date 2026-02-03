@@ -1,0 +1,20 @@
+body { font-family: Arial, sans-serif; text-align:center; margin:5px; }
+.topControls { display:flex; justify-content:center; gap:8px; margin-bottom:10px; }
+button { font-size:16px; padding:8px 12px; border-radius:6px; border:none; cursor:pointer; }
+#clearDataBtn { background:#f57c00;color:white; }
+#simpleViewToggle { background:#1565c0;color:white; }
+#lostToggle.won { background:#2e7d32;color:white; }
+#lostToggle.lost { background:#c62828;color:white; }
+input, select { font-size:18px; padding:6px; margin:5px; }
+#playerGrid { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; max-width:360px; margin:10px auto; }
+.playerBtn { padding:10px 0; font-size:16px; border-radius:6px; border:none; background:#eee; }
+.playerBtn.active { background:#1565c0;color:white;font-weight:bold; }
+#pitchContainer { position:relative; max-width:360px; margin:auto; }
+#pitch { width:100%; height:auto; display:block; }
+.zone { position:absolute; width:28%; height:40%; border-radius:8px; cursor:pointer; background-color:rgba(27,94,32,0.2); transition:background-color 0.3s; }
+#predictionBox { margin-top:10px; padding:10px; border:2px solid #ccc; border-radius:8px; }
+#alertBox { background:#d32f2f;color:white;font-size:22px;padding:15px;margin:15px auto; max-width:300px;border-radius:10px;animation:pulse 1s infinite; }
+.hidden { display:none; }
+@keyframes pulse {0%{opacity:1;}50%{opacity:0.6;}100%{opacity:1;}}
+.simple #advancedControls { display:none; }
+.simple #prediction { font-size:32px;font-weight:bold; }
