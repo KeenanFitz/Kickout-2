@@ -14,10 +14,10 @@
 </div>
 
 <div id="advancedControls">
-  <h1>GAA Kickout Input</h1>
+  <h1>Kickout Input</h1>
   
-  <input id="callInput" placeholder="Call (Red, Blue, Yellow, etc.)" />
-  
+  <input id="callInput" placeholder="Call (Red, Blue, 1, Dublin)" />
+
   <select id="setupInput">
     <option value="">Setup</option>
     <option>Example</option>
@@ -27,7 +27,7 @@
     <option>Pods</option>
   </select>
 
-  <button onclick="toggleHalftime()" class="halfBtn">Halftime Switch</button>
+  <button onclick="toggleHalftime()">Halftime Switch</button>
   <p id="halfStatus">First Half</p>
 
   <button id="lostToggle" class="won">Kickout WON</button>
@@ -36,16 +36,11 @@
   <div id="playerGrid"></div>
 </div>
 
-<h2>Tap Kickout Zone</h2>
+<h2>Tap Kickout Location</h2>
 
 <div id="pitchContainer">
   <img src="gaa_pitch.png" alt="GAA Pitch" id="pitch">
-  <div class="zone" data-zone="1" style="top:5%;left:5%;"></div>
-  <div class="zone" data-zone="2" style="top:5%;left:38%;"></div>
-  <div class="zone" data-zone="3" style="top:5%;left:70%;"></div>
-  <div class="zone" data-zone="4" style="top:50%;left:5%;"></div>
-  <div class="zone" data-zone="5" style="top:50%;left:38%;"></div>
-  <div class="zone" data-zone="6" style="top:50%;left:70%;"></div>
+  <canvas id="heatmapCanvas"></canvas>
 </div>
 
 <div id="predictionBox">
@@ -58,9 +53,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-<div id="pitchContainer">
-  <img src="gaa_pitch.png" alt="GAA Pitch" id="pitch">
-
-  <!-- Canvas for heatmap dots -->
-  <canvas id="heatmapCanvas"></canvas>
-</div>
