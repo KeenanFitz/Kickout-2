@@ -18,3 +18,22 @@ input, select { font-size:18px; padding:6px; margin:5px; }
 @keyframes pulse {0%{opacity:1;}50%{opacity:0.6;}100%{opacity:1;}}
 .simple #advancedControls { display:none; }
 .simple #prediction { font-size:32px;font-weight:bold; }
+#pitchContainer {
+  position: relative;
+  max-width: 360px;
+  margin: auto;
+}
+
+#pitch {
+  width: 100%;
+  display: block;
+}
+
+#heatmapCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* we handle clicks on container */
+}
