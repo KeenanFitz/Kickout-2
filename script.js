@@ -171,3 +171,73 @@ function triggerPatternBroken(){
     alertCooldown=false;
   },4000);
 }
+const pitchContainer = document.getElementById("pitchContainer");
+const heatmapCanvas = document.getElementById("heatmapCanvas");
+const ctx = heatmapCanvas.getContext("2d");
+
+function resizeCanvas() {
+  heatmapCanvas.width = pitchContainer.clientWidth;
+  heatmapCanvas.height = pitchContainer.clientHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+/* =========================
+   CLICK TO ADD DOT
+============================ */
+pitchContainer.addEventListener('click', (e) => {
+  const rect = pitchContainer.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+
+  // Add dot to canvas
+  addDot(x, y);
+
+  // Determine zone group
+  const zoneGroup = getZoneGroup(y);
+
+  saveKickout(zoneGroup);
+});
+
+/* =========================
+   DRAW DOT
+============================ */
+function addDot(x, y) {
+  ctx.fillStyle = "rgba(0,0,255,0.6)";
+  ctx.beginPath();
+  ctx.arc(x, y, 6, 0, Math.PI*2);
+  ctx.fill();
+}
+
+/* =========================
+   MAP Y COORD TO ZONE GROUP
+============================ */
+function getZoneGroup(y) {
+  const h = heatmapCanvas.height;
+  if (y < h/3) return "Top";       // zones 1,2,3
+  else if (y < 2*h/3) return "Middle"; // zones 4,5,6
+  else return "Bottom";            // zones 7,8,9
+}
+
+/* =========================
+   SAVE KICKOUT
+============================ */
+function saveKickout(zoneGroup) {
+  const call = document.getElementById("callInput").value.trim().toUpperCase();
+  const setup = document.getElementById("setupInput").value;
+
+  if (!call || !setup) return alert("Enter call & setup");
+  if (kickoutWon && !selectedPlayer) return alert("Select winner");
+
+  data.push({
+    call,
+    setup,
+    zoneGroup,
+    player: kickoutWon ? selectedPlayer : null,
+    won: kickoutWon,
+    time: Date.now()
+  });
+  localStorage.setItem("kickoutData", JSON.stringify(data));
+
+  updatePrediction();
+}
